@@ -8,14 +8,14 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace Network
 {
-    class PrivateServer
+    public class PrivateServer
     {
         public static void StartListening()
         {
             Dictionary<Guid, Socket> allsocket = new Dictionary<Guid, Socket>();
 
             IPAddress ipAddress = IPAddress.Parse("10.1.0.12");
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 5000);
             Socket listener = new Socket(AddressFamily.InterNetwork,
             SocketType.Stream, ProtocolType.Tcp);
             listener.Bind(localEndPoint);

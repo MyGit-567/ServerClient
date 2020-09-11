@@ -7,6 +7,8 @@ namespace Client1
     {
         static void Main(string[] args)
         {
+
+            Console.WriteLine("Running Client Main");
             PrivateConnection.ClientConnection();
             Console.ReadLine();
 

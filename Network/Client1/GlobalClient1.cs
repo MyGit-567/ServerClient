@@ -14,20 +14,19 @@ namespace Client1
         {
 
             {
+                Console.WriteLine("Client running tcpclient");
                 IPAddress ip = IPAddress.Parse("127.0.0.1");
                 int port = 5000;
                 TcpClient client = new TcpClient();
                 client.Connect(ip, port);
-                Console.WriteLine("client connected!!");
+                Console.WriteLine("client connected!!");              
                 NetworkStream ns = client.GetStream();
                 Thread thread = new Thread(o => ReceiveData((TcpClient)o));
-
                 thread.Start(client);
-
-                string s;
-                while (!string.IsNullOrEmpty((s = Console.ReadLine())))
+                string word;
+                while (!string.IsNullOrEmpty((word = Console.ReadLine())))
                 {
-                    byte[] buffer = Encoding.ASCII.GetBytes(s);
+                    byte[] buffer = Encoding.ASCII.GetBytes(word);
                     ns.Write(buffer, 0, buffer.Length);
                 }
 

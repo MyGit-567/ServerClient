@@ -13,12 +13,14 @@ namespace Client1
     {      
         public static void ClientConnection()
         {
+            Console.WriteLine("Running client socket mange");
             byte[] bytes = new byte[1024];
             IPAddress ipAddress = IPAddress.Parse("10.1.0.12");           
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 11000);
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 5000);
             Socket sender = new Socket(ipAddress.AddressFamily,
             SocketType.Stream, ProtocolType.Tcp);
             sender.Connect(remoteEP);
+
             Console.WriteLine("Socket connected to {0}",
                             sender.RemoteEndPoint.ToString());
 
@@ -28,10 +30,10 @@ namespace Client1
             int bytesSent = sender.Send(id.ToByteArray());
             Console.WriteLine($"send {bytesSent} bytes and their value is {id}");
 
-            Console.Write("enter the username you want to talk with him: ");
+            Console.Write("enter the id username you want to talk with him: ");
             string userInput = Console.ReadLine();
-            Guid id2 = new Guid(userInput);
-            bytesSent = sender.Send(id2.ToByteArray());
+            Guid idtotalk = new Guid(userInput);
+            bytesSent = sender.Send(idtotalk.ToByteArray());
 
             var task = Task.Factory.StartNew(obj =>
                 {
@@ -51,7 +53,6 @@ namespace Client1
                 userInput = Console.ReadLine();
                 byte[] msg = Encoding.ASCII.GetBytes(userInput);
                 bytesSent = sender.Send(msg);
-
             }
 
 

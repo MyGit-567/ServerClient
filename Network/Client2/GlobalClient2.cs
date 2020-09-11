@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -12,7 +10,6 @@ namespace Client2
     {
         public static void SecondClient()
         {
-
             {
                 IPAddress ip = IPAddress.Parse("127.0.0.1");
                 int port = 5000;
