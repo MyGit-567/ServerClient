@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Client1
 {
-    public class GlobalClient1
+    public class FirstGlobalClient
     {
         public static void FirstClient()
         {

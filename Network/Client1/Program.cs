@@ -12,7 +12,7 @@ namespace Client1
             PrivateConnection.ClientConnection();
             Console.ReadLine();
 
-            GlobalClient1.FirstClient();
+            FirstGlobalClient.FirstClient();
             Console.ReadLine();
 
             //Program program = new Program();
